@@ -36,14 +36,13 @@
   height: 120px;
   width: 120px;
   background-position: center;
-  object-fit: center;
   margin-right: 24px;
 }
 
 .profile__title {
   font-size: 42px;
   line-height: 48px;
-  font-weight: 500px;
+  font-weight: 500;
   grid-area: title;
   margin: 0;
 }
@@ -112,9 +111,10 @@
 .card__title {
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: nowrap;
   font-weight: 900;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 1.2;
   max-width: 219px;
   margin: 0;
 }
@@ -123,5 +123,4 @@
   background: transparent url(../images/like-inactive.svg) center no-repeat;
   width: 21px;
   height: 18px;
-  margin-right: ;
 }
