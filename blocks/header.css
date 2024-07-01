@@ -14,7 +14,7 @@
     box-sizing: border-box;
     padding: 28px 0 32px 27px;
     margin: 0;
-    width: 100%;
+    max-width: 100%;
   }
   .header__image {
     width: 126px;
