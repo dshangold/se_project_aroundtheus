@@ -4,14 +4,6 @@
   border-radius: 10px;
   list-style: none;
 }
-.card__list {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 20px 17px;
-  padding: 0;
-  margin: 0;
-}
 .card__image {
   width: 282px;
   height: 282px;
@@ -45,6 +37,7 @@
   border: none;
   width: 21px;
   height: 18px;
+  cursor: pointer;
 }
 
 .card__like-button:hover {
