@@ -82,8 +82,7 @@
   .profile__info {
     white-space: nowrap;
     max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: auto;
     justify-content: center;
     gap: 10px;
     margin: 0;
@@ -101,10 +100,10 @@
     max-width: 320px;
   }
   .profile__description {
-    width: 100%;
     text-align: center;
     font-size: 14px;
     margin: 0;
+    max-width: 320px;
   }
   .profile__add-button {
     width: 100%;
