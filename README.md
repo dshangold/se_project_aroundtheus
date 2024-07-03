@@ -22,7 +22,7 @@ Overall, this project was very challenging but rewarding to see it completed. Op
 
 - [Link to the project on Figma](https://www.figma.com/design/Es8zZP3ARGH9JGcw60i3OD/Sprint-3_-Around-the-US?node-id=0-1&t=tgycVlxzaRIFh0uD-0)
 
-**Figma**
+**Github**
 
 - [Link to the project on Github](https://dshangold.github.io/se_project_aroundtheus/)
 
