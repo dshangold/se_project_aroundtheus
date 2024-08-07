@@ -109,7 +109,17 @@
 
     <!-- Preview Image -->
 
-    <div class="modal" id="preview-image-moda"></div>
+    <div class="modal modal_preview" id="preview-image-modal">
+      <div class="modal__preview-container">
+        <button
+          class="modal__close modal_preview-close"
+          id="preview-close-button"
+          type="button"
+        ></button>
+        <img src="" alt="" class="modal__preview-image" />
+        <p class="modal__image-caption"></p>
+      </div>
+    </div>
 
     <template id="card-template">
       <li class="card">

@@ -28,6 +28,7 @@ const initialCards = [
 // Wrappers
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
+const previewImageModal = document.querySelector("#preview-image-modal");
 const profileFormElement = profileEditModal.querySelector(".modal__form");
 const addCardFormElement = addCardModal.querySelector(".modal__form");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
@@ -82,21 +83,46 @@ function handleAddCardFormSubmit(e) {
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
   const cardTitleEl = cardElement.querySelector(".card__title");
   cardTitleEl.textContent = cardData.name;
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__trash-button");
-
-  // add click listener to the cardImage element
-  // open modal with previewImageModal
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
 
   deleteButton.addEventListener("click", () => cardElement.remove());
+
+  function closeImagePreviewModal() {
+    closePopup(previewImageModal);
+  }
+  const closePreviewImageModalButton = document.querySelector(
+    "#preview-close-button"
+  );
+  closePreviewImageModalButton.addEventListener("click", () => {
+    closeImagePreviewModal();
+  });
+
+  cardImageEl.addEventListener("click", () => {
+    const previewImage = previewImageModal.querySelector(
+      ".modal__preview-image"
+    );
+    const previewTitle = previewImageModal.querySelector(
+      ".modal__image-caption"
+    );
+
+    previewImage.src = cardData.link;
+    previewImage.alt = cardData.name;
+    previewTitle.textContent = cardData.name;
+
+    openPopup(previewImageModal);
+  });
+
+  cardTitleEl.textContent = cardData.name;
+
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name;
 
   return cardElement;
 }
