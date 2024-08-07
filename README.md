@@ -1,4 +1,4 @@
-# Project 3: Around The U.S.
+# Project 5: Around The U.S.
 
 ### Overview
 
@@ -6,13 +6,12 @@
 - Figma
 - Github Link
 - Images
-- Video recording of project 3 overview
 
 **Project Description**
 
-For Project 3 of the TripleTen course, the task was to build a website using HTML and CSS and have it displayed correctly on popular screen sizes. In this project, you'll see the responsive design come into play at the desktop (1280px), tablet (800px), and mobile resolutions (320px). I accomplished this task by leveraging grid display, media queries to adjust the project at certain breakpoints, max-width and other key design functions. I also leveraged Figma to understand the dimensions and properties of different elements used throughout this project. Lastly, I used more advanced bash and git functions in order to work more effectively.
+For Project 5 of the TripleTen course, I implemented a variety of different JavaScript functions to bring my website to life. Specfically for this project, I refactored a lot of my html to leverage templates & applied a forEach loop to load all my cards through JS. I also worked on adding new cards through the add card button, updating the like button, deleting cards by adding a trash button and function behind it, and lastly added a preview of the card image with a smooth transition on open and close.
 
-There is certainly room for improvement within this project. Adding animations to certain elements within the project could bring it more to life and make it more accessible for users while they interact with the webpage, specifically making text or buttons larger on smaller resolution as a user hovers over it or interacts with it to make the element more clear.
+There is certainly room for improvement within this project. I would like to clean up the way I organized my JS functions and group them so there is easier readability as I'm scanning through the workflows. I need to continue to learn more about JS and logic behind how things work, but overall this was a challenging yet rewarding part of the project.
 
 I also need to continue to work on understanding grid display. This was the most challenging part of the project for me, so I'd like to continue to learn more on this topic.
 
@@ -47,6 +46,6 @@ Overall, this project was very challenging but rewarding to see it completed. Op
 
 ![Alt Text](../se_project_aroundtheus/images/logo.svg)
 
-**Video Overview of Project 3**
+![Alt Text](../se_project_aroundtheus/images/like-inactive.svg)
 
-- [Link to the video overview](https://drive.google.com/file/d/1vbnuNf5qmjz75fvHUnc_fHpxLAVSeNx3/view?usp=sharing)
+![Alt Text](../se_project_aroundtheus/images/Trash.svg)
