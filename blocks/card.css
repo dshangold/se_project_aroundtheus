@@ -4,6 +4,7 @@
   border-radius: 10px;
   list-style: none;
   overflow: hidden;
+  position: relative;
 }
 .card__image {
   width: 282px;
@@ -48,4 +49,20 @@
 
 .card__like-button:hover {
   opacity: 0.5;
+}
+
+.card__trash-button {
+  background: url(../images/Trash.svg) center no-repeat;
+  border: none;
+  cursor: pointer;
+  background-position: contain;
+  position: absolute;
+  top: 18px;
+  left: 249px;
+  width: 18px;
+  height: 19.3px;
+}
+
+.card__trash-button:hover {
+  opacity: 0.6;
 }
