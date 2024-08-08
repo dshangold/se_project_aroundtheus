@@ -152,7 +152,7 @@
     padding: 0;
   }
 
-  .modal_preview-close {
+  .modal__preview-close {
     position: absolute;
     top: -30px;
     left: calc(100%);

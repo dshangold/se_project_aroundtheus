@@ -98,13 +98,11 @@ function getCardElement(cardData) {
   function closeImagePreviewModal() {
     closePopup(previewImageModal);
   }
-  const closePreviewImageModalButton = document.querySelector(
-    "#preview-close-button"
-  );
-  closePreviewImageModalButton.addEventListener("click", () => {
+  const closePreviewImageModal = document.querySelector("#preview-image-modal");
+  closePreviewImageModal.addEventListener("click", () => {
     closeImagePreviewModal();
 
-    // Can you explain further about memory leak risk? I've worked with Nacho and we didn't find the issue. Thanks! //
+    // Made a slight adjustment. Please let me know if this clears the memory leak issue now //
   });
   cardImageEl.addEventListener("click", () => {
     const previewImage = previewImageModal.querySelector(
