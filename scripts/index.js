@@ -81,6 +81,20 @@ function handleAddCardFormSubmit(e) {
   addCardFormElement.reset();
 }
 
+function closeImagePreviewModal() {
+  closePopup(previewImageModal);
+}
+const closePreviewImageModalButton = document.querySelector(
+  "#preview-close-button"
+);
+
+closePreviewImageModalButton.addEventListener("click", () => {
+  closeImagePreviewModal();
+});
+
+const previewImage = previewImageModal.querySelector(".modal__preview-image");
+const previewTitle = previewImageModal.querySelector(".modal__image-caption");
+
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
@@ -95,23 +109,7 @@ function getCardElement(cardData) {
 
   deleteButton.addEventListener("click", () => cardElement.remove());
 
-  function closeImagePreviewModal() {
-    closePopup(previewImageModal);
-  }
-  const closePreviewImageModal = document.querySelector("#preview-image-modal");
-  closePreviewImageModal.addEventListener("click", () => {
-    closeImagePreviewModal();
-
-    // Made a slight adjustment. Please let me know if this clears the memory leak issue now //
-  });
   cardImageEl.addEventListener("click", () => {
-    const previewImage = previewImageModal.querySelector(
-      ".modal__preview-image"
-    );
-    const previewTitle = previewImageModal.querySelector(
-      ".modal__image-caption"
-    );
-
     previewImage.src = cardData.link;
     previewImage.alt = cardData.name;
     previewTitle.textContent = cardData.name;
