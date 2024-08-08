@@ -78,6 +78,7 @@ function handleAddCardFormSubmit(e) {
   const link = cardLinkInput.value;
   renderCard({ name, link }, cardListEl);
   closePopup(addCardModal);
+  addCardFormElement.reset();
 }
 
 function getCardElement(cardData) {
@@ -102,8 +103,9 @@ function getCardElement(cardData) {
   );
   closePreviewImageModalButton.addEventListener("click", () => {
     closeImagePreviewModal();
-  });
 
+    // Can you explain further about memory leak risk? I've worked with Nacho and we didn't find the issue. Thanks! //
+  });
   cardImageEl.addEventListener("click", () => {
     const previewImage = previewImageModal.querySelector(
       ".modal__preview-image"
