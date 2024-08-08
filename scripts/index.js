@@ -131,7 +131,6 @@ function getCardElement(cardData) {
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-profileEditBtn.addEventListener("click", () => openPopup(profileEditModal));
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
