@@ -1,4 +1,5 @@
 import Card from "../components/card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -31,6 +32,24 @@ const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
+
+const validationSettings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormElement = profileEditForm.querySelector(".modal__form");
+const addFormElement = addCardFormElement.querySelector(".modal__form");
+
+const editFormValidator = new FormValidator(
+  validationSettings,
+  editFormElement
+);
+
+const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
 //Elements//
 const profileEditModal = document.querySelector("#profile-edit-modal");
