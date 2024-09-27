@@ -1,3 +1,5 @@
+import Card from "../components/card.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -24,6 +26,11 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+const cardData = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+};
 
 //Elements//
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -63,7 +70,8 @@ function openPopup(modal) {
 }
 
 function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
+  const card = new Card(cardData, "#card-template", handleImagePreview);
+  const cardElement = card.getView();
   wrapper.prepend(cardElement);
 }
 
@@ -96,6 +104,14 @@ function handleEscape(evt) {
   }
 }
 
+function handleImagePreview() {
+  previewImage.src = cardData.link;
+  previewImage.alt = cardData.name;
+  previewTitle.textContent = cardData.name;
+
+  openPopup(previewImageModal);
+}
+
 function closeImagePreviewModal() {
   closePopup(previewImageModal);
 }
@@ -109,38 +125,6 @@ closePreviewImageModalButton.addEventListener("click", () => {
 
 const previewImage = previewImageModal.querySelector(".modal__preview-image");
 const previewTitle = previewImageModal.querySelector(".modal__image-caption");
-
-//Card Function//
-
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  cardTitleEl.textContent = cardData.name;
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__trash-button");
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  deleteButton.addEventListener("click", () => cardElement.remove());
-
-  cardImageEl.addEventListener("click", () => {
-    previewImage.src = cardData.link;
-    previewImage.alt = cardData.name;
-    previewTitle.textContent = cardData.name;
-
-    openPopup(previewImageModal);
-  });
-
-  cardTitleEl.textContent = cardData.name;
-
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-
-  return cardElement;
-}
 
 // Event Listeners//
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
