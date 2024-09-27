@@ -41,15 +41,8 @@ const validationSettings = {
   errorClass: "modal__error_visible",
 };
 
-const editFormElement = profileEditForm.querySelector(".modal__form");
-const addFormElement = addCardFormElement.querySelector(".modal__form");
-
-const editFormValidator = new FormValidator(
-  validationSettings,
-  editFormElement
-);
-
-const addFormValidator = new FormValidator(validationSettings, addFormElement);
+const editFormElement = document.querySelector("#profile-edit-modal");
+const addFormElement = document.querySelector("#add-card-modal");
 
 //Elements//
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -166,3 +159,15 @@ addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
 addCardModalCloseBtn.addEventListener("click", () => closePopup(addCardModal));
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+
+// Validation //
+
+const editFormValidator = new FormValidator(
+  validationSettings,
+  editFormElement
+);
+
+const addFormValidator = new FormValidator(validationSettings, addFormElement);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
