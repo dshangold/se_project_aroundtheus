@@ -36,16 +36,12 @@ class FormValidator {
   }
 
   _toggleButtonState(inputEl) {
-    let foundInvalid = false;
-
     if (this._hasInvalidInput(inputEl)) {
-      this._submitButton.classList.add(this._inactiveButtonClass);
-      this._submitButton.disabled = true;
-      return;
+      this.disableSubmitButton();
+    } else {
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.disabled = false;
     }
-
-    this._submitButton.classList.remove(this._inactiveButtonClass);
-    this._submitButton.disabled = false;
   }
 
   disableSubmitButton(inputEl) {
@@ -56,6 +52,7 @@ class FormValidator {
   _setEventListeners() {
     this._inputEls = [...this._formEl.querySelectorAll(this._inputSelector)];
     this._submitButton = this._formEl.querySelector(this._submitButtonSelector);
+    this._toggleButtonState();
 
     this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
@@ -73,14 +70,5 @@ class FormValidator {
     this._setEventListeners();
   }
 }
-
-const settings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 
 export default FormValidator;

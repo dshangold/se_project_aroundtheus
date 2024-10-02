@@ -82,10 +82,14 @@ function openPopup(modal) {
   document.addEventListener("keydown", handleEscape);
 }
 
-function renderCard(cardData, wrapper) {
+function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImagePreview);
-  const cardElement = card.getView();
-  wrapper.prepend(cardElement);
+  return card.getView();
+}
+
+function renderCard(cardData, wrapper) {
+  const cardElement = createCard(cardData);
+  wrapper.append(cardElement);
 }
 
 function handleProfileEditSubmit(e) {
@@ -118,6 +122,9 @@ function handleEscape(evt) {
   }
 }
 
+const previewImage = previewImageModal.querySelector(".modal__preview-image");
+const previewTitle = previewImageModal.querySelector(".modal__image-caption");
+
 function handleImagePreview() {
   previewImage.src = cardData.link;
   previewImage.alt = cardData.name;
@@ -129,16 +136,13 @@ function handleImagePreview() {
 function closeImagePreviewModal() {
   closePopup(previewImageModal);
 }
-const closePreviewImageModalButton = document.querySelector(
-  "#preview-close-button"
-);
 
-closePreviewImageModalButton.addEventListener("click", () => {
-  closeImagePreviewModal();
+const closeButtons = document.querySelectorAll(".modal__close");
+
+closeButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => closePopup(popup));
 });
-
-const previewImage = previewImageModal.querySelector(".modal__preview-image");
-const previewTitle = previewImageModal.querySelector(".modal__image-caption");
 
 // Event Listeners//
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
