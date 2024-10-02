@@ -125,10 +125,10 @@ function handleEscape(evt) {
 const previewImage = previewImageModal.querySelector(".modal__preview-image");
 const previewTitle = previewImageModal.querySelector(".modal__image-caption");
 
-function handleImagePreview() {
-  previewImage.src = cardData.link;
-  previewImage.alt = cardData.name;
-  previewTitle.textContent = cardData.name;
+function handleImagePreview(cardData) {
+  previewImage.src = cardData._link;
+  previewImage.alt = cardData._name;
+  previewTitle.textContent = cardData._name;
 
   openPopup(previewImageModal);
 }
