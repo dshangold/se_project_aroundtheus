@@ -126,8 +126,8 @@ const previewImage = previewImageModal.querySelector(".modal__preview-image");
 const previewTitle = previewImageModal.querySelector(".modal__image-caption");
 
 function handleImagePreview(cardData) {
-  previewImage.src = cardData._link;
-  previewImage.alt = cardData._name;
+  previewImage.src = cardData.link;
+  previewImage.alt = cardData.name;
   previewTitle.textContent = cardData._name;
 
   openPopup(previewImageModal);
@@ -153,9 +153,6 @@ profileEditBtn.addEventListener("click", () => {
   profileDescriptionInput.value = profileDescription.textContent.trim();
   openPopup(profileEditModal);
 });
-profileModalCloseBtn.addEventListener("click", () =>
-  closePopup(profileEditModal)
-);
 
 [profileEditModal, addCardModal, previewImageModal].forEach((modal) => {
   modal.addEventListener("click", handleCloseOverlay);
