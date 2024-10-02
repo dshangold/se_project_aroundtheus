@@ -133,10 +133,6 @@ function handleImagePreview(cardData) {
   openPopup(previewImageModal);
 }
 
-function closeImagePreviewModal() {
-  closePopup(previewImageModal);
-}
-
 const closeButtons = document.querySelectorAll(".modal__close");
 
 closeButtons.forEach((button) => {
