@@ -89,7 +89,7 @@ function createCard(cardData) {
 
 function renderCard(cardData, wrapper) {
   const cardElement = createCard(cardData);
-  wrapper.append(cardElement);
+  wrapper.prepend(cardElement);
 }
 
 function handleProfileEditSubmit(e) {
