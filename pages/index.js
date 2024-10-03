@@ -128,7 +128,7 @@ const previewTitle = previewImageModal.querySelector(".modal__image-caption");
 function handleImagePreview(cardData) {
   previewImage.src = cardData.link;
   previewImage.alt = cardData.name;
-  previewTitle.textContent = cardData._name;
+  previewTitle.textContent = cardData.name;
 
   openPopup(previewImageModal);
 }
@@ -155,7 +155,6 @@ profileEditBtn.addEventListener("click", () => {
 });
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
-addCardModalCloseBtn.addEventListener("click", () => closePopup(addCardModal));
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
