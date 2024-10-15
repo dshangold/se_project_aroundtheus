@@ -9,7 +9,7 @@ import {
   initialCards,
   validationSettings,
   addNewCardButton,
-} from "../components/constants.js";
+} from "../utils/constants.js";
 
 const editFormElement = document.querySelector("#profile-edit-modal");
 const addFormElement = document.querySelector("#add-card-modal");
