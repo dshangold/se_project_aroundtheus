@@ -9,6 +9,8 @@ import {
   initialCards,
   validationSettings,
   addNewCardButton,
+  profileNameinput,
+  profileDescriptionInput,
 } from "../utils/constants.js";
 
 const editFormElement = document.querySelector("#profile-edit-modal");
@@ -26,6 +28,7 @@ const editProfilePopup = new PopupWithForm({
   handleFormSubmit: (data) => {
     userInfo.setUserInfo(data);
     editProfilePopup.close();
+    editFormValidator.disableSubmitButton();
   },
 });
 
@@ -40,6 +43,7 @@ const addCardPopup = new PopupWithForm({
     const cardElement = createCard({ name, link });
     cardList.addItems(cardElement);
     addCardPopup.close();
+    addFormValidator.disableSubmitButton();
   },
 });
 
@@ -75,6 +79,9 @@ addCardPopup.setEventListeners();
 imagePopup.setEventListeners();
 
 profileEditBtn.addEventListener("click", () => {
+  const currentUserInfo = userInfo.getUserInfo();
+  profileNameinput.value = currentUserInfo.name;
+  profileDescriptionInput.value = currentUserInfo.description;
   editProfilePopup.open();
 });
 

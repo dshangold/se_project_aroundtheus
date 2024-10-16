@@ -34,3 +34,7 @@ export const validationSettings = {
 };
 
 export const addNewCardButton = document.querySelector(".profile__add-button");
+export const profileNameinput = document.querySelector("#profile-title-input");
+export const profileDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
