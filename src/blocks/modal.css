@@ -31,6 +31,14 @@
   max-height: 330px;
 }
 
+.modal__container-confirm {
+  height: 181px;
+}
+
+.modal__container_avatar {
+  height: 272px;
+}
+
 .modal__preview-container {
   position: relative;
   margin: auto;
@@ -57,7 +65,6 @@
   font-weight: 900;
   line-height: 29.05px;
   color: #000;
-  padding-bottom: 24px;
   margin: 0;
 }
 
