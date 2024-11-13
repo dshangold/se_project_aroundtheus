@@ -19,7 +19,7 @@ const editFormElement = document.querySelector("#profile-edit-modal");
 const addFormElement = document.querySelector("#add-card-modal");
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const avatarEditBtn = document.querySelector("#profile-image-button");
-const AvatarEditForm = document.forms["edit-avatar-form"];
+const avatarEditForm = document.forms["edit-avatar-form"];
 const avatar = document.querySelector(".profile__image");
 
 // Popups
@@ -48,17 +48,18 @@ const userInfo = new UserInfo({
 const editProfilePopup = new PopupWithForm({
   popupSelector: "#profile-edit-modal",
   handleFormSubmit: (data) => {
-    editProfilePopup.setIsLoading(true);
+    editProfilePopup.renderLoading(true);
     api
       .setUserInfo(data.name, data.about)
       .then((updatedData) => {
         userInfo.setUserInfo(updatedData);
         editProfilePopup.close();
+        editProfilePopup.resetForm();
         editFormValidator.disableSubmitButton();
       })
       .catch((err) => console.error("Error updating user info", err))
       .finally(() => {
-        editProfilePopup.setIsLoading(false);
+        editProfilePopup.renderLoading(false);
       });
   },
 });
@@ -66,20 +67,21 @@ const editProfilePopup = new PopupWithForm({
 const addCardPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: ({ name, link }) => {
-    addCardPopup.setIsLoading(true);
+    addCardPopup.renderLoading(true);
     api
       .addCard(name, link)
       .then((cardData) => {
         const cardElement = createCard(cardData);
         cardList.addItems(cardElement);
         addCardPopup.close();
+        addCardPopup.resetForm();
         addFormValidator.disableSubmitButton();
       })
       .catch((err) => {
         console.error(err);
       })
       .finally(() => {
-        addCardPopup.setIsLoading(false);
+        addCardPopup.renderLoading(false);
       });
   },
 });
@@ -146,7 +148,7 @@ function handleDeleteCardClick(cardInstance) {
     api
       .deleteCard(cardInstance._id)
       .then(() => {
-        cardInstance._handleDeleteCard();
+        cardInstance.handleDeleteCard();
         confirmPopup.close();
       })
       .catch((error) => console.error("Error deleting cards:", error));
@@ -169,6 +171,7 @@ const updateAvatarPopup = new PopupWithForm({
       .then((updatedUserData) => {
         avatar.src = updatedUserData.avatar;
         updateAvatarPopup.close();
+        updateAvatarPopup.resetForm();
         avatarFormValidator.disableSubmitButton();
       })
       .catch((err) => console.error("Error updating avatar", err))
@@ -190,7 +193,7 @@ imagePopup.setEventListeners();
 profileEditBtn.addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();
   profileNameinput.value = currentUserInfo.name;
-  profileDescriptionInput.value = currentUserInfo.description;
+  profileDescriptionInput.value = currentUserInfo.about;
   editProfilePopup.open();
 });
 
@@ -205,13 +208,16 @@ const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
 const avatarFormValidator = new FormValidator(
   validationSettings,
-  AvatarEditForm
+  avatarEditForm
 );
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
-api.getInitialCards().then((cardsData) => {
-  cardList.renderItems(cardsData);
-});
+api
+  .getInitialCards()
+  .then((cardsData) => {
+    cardList.renderItems(cardsData);
+  })
+  .catch((err) => console.error("Error fetching initial cards", err));

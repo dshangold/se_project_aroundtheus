@@ -18,12 +18,16 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
-  setIsLoading(isLoading) {
+  renderLoading(isLoading, loadingText = "Saving...") {
     if (isLoading) {
-      this._submitButton.textContent = "Saving...";
+      this._submitButton.textContent = loadingText;
     } else {
       this._submitButton.textContent = this._submitButtonText;
     }
+  }
+
+  resetForm() {
+    this._popupForm.reset();
   }
 
   setEventListeners() {
@@ -31,11 +35,6 @@ export default class PopupWithForm extends Popup {
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      this._popupForm.reset();
     });
-  }
-
-  close() {
-    super.close();
   }
 }
