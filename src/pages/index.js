@@ -164,7 +164,7 @@ avatarEditBtn.addEventListener("click", () => {
 const updateAvatarPopup = new PopupWithForm({
   popupSelector: "#edit-avatar-modal",
   handleFormSubmit: (userData) => {
-    updateAvatarPopup.setIsLoading(true);
+    updateAvatarPopup.renderLoading(true);
     const avatarURL = userData.link;
     api
       .updateAvatar(avatarURL)
@@ -176,7 +176,7 @@ const updateAvatarPopup = new PopupWithForm({
       })
       .catch((err) => console.error("Error updating avatar", err))
       .finally(() => {
-        updateAvatarPopup.setIsLoading(false);
+        updateAvatarPopup.renderLoading(false);
       });
   },
 });
